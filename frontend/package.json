@@ -2,7 +2,11 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
+<<<<<<< HEAD
   "homepage": "https://github.com/MFakharRizwan/SmartQuery.git",   
+=======
+  "homepage": "https://github.com/MFakharRizwan/SmartQuery.git",   // Replace with your URL
+>>>>>>> 72eaf8dfb8eae8ed8c0857785018ce4be3ae6736
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
@@ -19,8 +23,13 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+<<<<<<< HEAD
     "predeploy": "npm run build",            
     "deploy": "gh-pages -d build"            
+=======
+    "predeploy": "npm run build",            // Make sure this line is correct
+    "deploy": "gh-pages -d build"            // Ensure this line exists
+>>>>>>> 72eaf8dfb8eae8ed8c0857785018ce4be3ae6736
   },
   "eslintConfig": {
     "extends": [
@@ -41,3 +50,4 @@
     ]
   }
 }
+
