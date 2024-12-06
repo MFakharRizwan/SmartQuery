@@ -2,7 +2,7 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://username.github.io/MyReactProject",   // Replace with your URL
+  "homepage": "https://github.com/MFakharRizwan/SmartQuery.git",   // Replace with your URL
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
