@@ -1,0 +1,56 @@
+/* Main container for the dashboard with gradient background */
+.dashboard {
+    background-image: linear-gradient(to right top, #ce7b99, #c16d99, #b1619a, #9e579c, #874f9e, #77489b, #654398, #523d94, #49368a, #3f2f81, #362877, #2c216e);
+    min-height: 90vh;
+    height: 90%;
+    padding: 20px;
+    color: white;
+    font-family: Arial, sans-serif;
+  }
+  
+  
+  
+  /* Content styling */
+  .content {
+    background: linear-gradient(to right, #3300cc, #6600ff);
+    padding: 30px;
+    border-radius: 10px;
+    margin-top: 20px;
+    text-align: center;
+    justify-content: center;
+    height: 100vh;
+  }
+  
+  .content h1 {
+    margin-top: 10%;
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    
+  }
+  
+  .content p {
+    font-size: 1.1em;
+    margin-bottom: 20px;
+  }
+  
+  /* Search bar styling */
+  .search-bar {
+    padding: 10px;
+    width: 150%;
+    max-width: 900px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    margin-bottom: 30px;
+  }
+  
+  .content h2 {
+    font-size: 2em;
+    margin-top: 30px;
+  }
+  
+  .content p {
+    font-size: 1em;
+    color: #e0e0e0;
+  }
+  

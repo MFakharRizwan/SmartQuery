@@ -1,0 +1,68 @@
+/* Navbar.css */
+
+/* Navbar background and layout */
+nav {
+  background-image: linear-gradient(to right top, #ce7b99, #c16d99, #b1619a, #9e579c, #874f9e, #77489b, #654398, #523d94, #49368a, #3f2f81, #362877, #2c216e);
+  padding: 1rem 2rem; /* Added padding for better spacing */
+  display: flex; /* Use flexbox for layout */
+  justify-content: space-between; /* Space items evenly */
+  align-items: center; /* Center items vertically */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  position: sticky; /* Make navbar stick to the top */
+  top: 0; /* Stick at the top */
+  z-index: 1000; /* Ensure navbar stays above other content */
+}
+
+/* Logo styling */
+.logo {
+  color: #f9f5f4; /* Logo text color */
+  font-size: 1.5rem; /* Size for the logo */
+  font-weight: bold; /* Bold for emphasis */
+}
+
+/* Link styles */
+nav a {
+  color: white; /* Link text color */
+  text-decoration: none; /* Remove underline from links */
+  margin: 0 15px; /* Increased space between links */
+  font-weight: 750; /* Slightly lighter boldness */
+  transition: color 0.3s, transform 0.3s; /* Smooth transitions */
+}
+
+nav a:hover {
+  color: #0a0c08; /* Change link color on hover */
+  transform: scale(1.05); /* Slight zoom effect on hover */
+}
+
+/* Button styles */
+nav button {
+  background-color: #ff6347; /* Button background color */
+  color: white; /* Button text color */
+  border: none; /* Remove default border */
+  padding: 0.5rem 1rem; /* Space inside the button */
+  cursor: pointer; /* Change cursor to pointer */
+  border-radius: 5px; /* Rounded corners */
+  transition: background-color 0.3s, transform 0.3s; /* Smooth transitions */
+  font-size: 2rem; /* Consistent font size */
+}
+
+nav button:hover {
+  background-color: #e55347; /* Change button color on hover */
+  transform: scale(1.05); /* Slight zoom effect on hover */
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column; /* Stack items vertically on smaller screens */
+    align-items: flex-start; /* Align items to the start */
+    padding: 1rem; /* Reduced padding for smaller screens */
+  }
+
+  nav a,
+  nav button {
+    margin: 10px 0; /* Space for vertical layout */
+    width: 100%; /* Full width for buttons and links */
+    text-align: center; /* Center text in smaller views */
+  }
+}

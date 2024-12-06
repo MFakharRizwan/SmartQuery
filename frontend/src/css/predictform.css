@@ -1,0 +1,60 @@
+/* PredictionForm Styling */
+
+
+  
+  .prediction-form-container {
+    width: 100%;
+    max-width: 500px;
+    background-color: #fff;
+    padding: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    text-align: center;
+  }
+  
+  .prediction-form-container h2 {
+    color: #1f8ef1;
+    margin-bottom: 20px;
+  }
+  
+  .prediction-form-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .prediction-form-container input[type="text"] {
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: border-color 0.3s ease;
+  }
+  
+  .prediction-form-container input[type="text"]:focus {
+    outline: none;
+    border-color: #1f8ef1;
+  }
+  
+  .prediction-form-container button {
+    background-color: #1f8ef1;
+    color: #fff;
+    font-size: 16px;
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .prediction-form-container button:hover {
+    background-color: #166cb3;
+  }
+  
+  .prediction-form-container h2.prediction-result {
+    color: #333;
+    font-size: 20px;
+    margin-top: 20px;
+    font-weight: 500;
+  }
+  
