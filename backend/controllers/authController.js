@@ -1,4 +1,6 @@
+// backend/controllers/authController.js
 const User = require("../models/User");
+const Profile = require("../models/Profile");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 
@@ -19,11 +21,15 @@ exports.registerUser = async (req, res) => {
     if (existingUser) return res.status(400).json({ message: "User already exists" });
 
     const hashedPassword = await bcrypt.hash(password, 10);
-    const newUser = new User({ username, email, password: hashedPassword });
+
+    const profile = new Profile();
+    await profile.save();
+
+    const newUser = new User({ username, email, password: hashedPassword, profile: profile._id });
     await newUser.save();
 
-    const token = generateToken(newUser); // Generate token after registration
-    res.status(201).json({ message: "User registered successfully", token }); // Send token to frontend
+    const token = generateToken(newUser);
+    res.status(201).json({ message: "User registered successfully", token, user: newUser });
   } catch (error) {
     console.error("Registration Error:", error);
     res.status(500).json({ message: "Server error" });
@@ -34,13 +40,13 @@ exports.registerUser = async (req, res) => {
 exports.loginUser = async (req, res) => {
   const { email, password } = req.body;
   try {
-    const user = await User.findOne({ email });
+    const user = await User.findOne({ email }).populate('profile');
     if (!user || !(await user.comparePassword(password))) {
       return res.status(401).json({ message: "Invalid credentials" });
     }
 
     const token = generateToken(user);
-    res.json({ token, user: { id: user._id, username: user.username } });
+    res.json({ token, user });
   } catch (error) {
     console.error("Login Error:", error);
     res.status(500).json({ message: "Server error" });

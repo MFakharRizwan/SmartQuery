@@ -1,14 +1,15 @@
+// frontend/src/services/authServices.js
 import axios from 'axios';
 
-const API_URL = 'http://localhost:4000/api/auth'; // Backend URL
+const API_URL = 'http://localhost:4000/api';
 
 const authService = {
   isAuthenticated: () => !!localStorage.getItem('token'),
 
   register: async (username, email, password) => {
     try {
-      const response = await axios.post(`${API_URL}/register`, { username, email, password });
-      localStorage.setItem('token', response.data.token); // Store token
+      const response = await axios.post(`${API_URL}/auth/register`, { username, email, password });
+      localStorage.setItem('token', response.data.token);
       return response.data;
     } catch (error) {
       throw new Error(error.response?.data?.message || 'Registration failed');
@@ -17,8 +18,8 @@ const authService = {
 
   login: async (email, password) => {
     try {
-      const response = await axios.post(`${API_URL}/login`, { email, password });
-      localStorage.setItem('token', response.data.token); // Store token
+      const response = await axios.post(`${API_URL}/auth/login`, { email, password });
+      localStorage.setItem('token', response.data.token);
       return response.data;
     } catch (error) {
       throw new Error(error.response?.data?.message || 'Login failed');
@@ -26,7 +27,7 @@ const authService = {
   },
 
   logout: () => {
-    localStorage.removeItem('token'); // Remove token
+    localStorage.removeItem('token');
   },
 
   getProfile: async () => {
@@ -36,7 +37,7 @@ const authService = {
     }
 
     try {
-      const response = await axios.get('http://localhost:4000/api/user/profile', {
+      const response = await axios.get(`${API_URL}/user/profile`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       return response.data;
@@ -48,7 +49,7 @@ const authService = {
   updateProfile: async (data) => {
     const token = localStorage.getItem('token');
     try {
-      const response = await axios.put('http://localhost:4000/api/user/profile', data, {
+      const response = await axios.put(`${API_URL}/user/profile`, data, {
         headers: { Authorization: `Bearer ${token}` },
       });
       return response.data;
@@ -59,4 +60,3 @@ const authService = {
 };
 
 export default authService;
-

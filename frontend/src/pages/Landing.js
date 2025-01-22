@@ -1,7 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
-
 import main4 from '../assets/images/about.svg';
 import main2 from '../assets/images/main2.svg';
 import '../css/landing.css';

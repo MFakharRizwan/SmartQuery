@@ -1,3 +1,4 @@
+// frontend/src/components/Profile.js
 import React, { useEffect, useState } from 'react';
 import authService from '../services/authServices';
 import '../css/Profile.css';
@@ -6,6 +7,7 @@ const Profile = () => {
   const [profile, setProfile] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
   const [formData, setFormData] = useState({});
+  const [imageFile, setImageFile] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
@@ -37,27 +39,23 @@ const Profile = () => {
     }));
   };
 
-  const handleSkillsChange = (e, index) => {
-    const { value } = e.target;
-    const updatedSkills = [...formData.skills];
-    updatedSkills[index] = value;
-    setFormData((prevData) => ({
-      ...prevData,
-      skills: updatedSkills,
-    }));
-  };
-
-  const addSkill = () => {
-    setFormData((prevData) => ({
-      ...prevData,
-      skills: [...prevData.skills, ''],
-    }));
+  const handleFileChange = (e) => {
+    setImageFile(e.target.files[0]);
   };
 
   const handleSave = async () => {
     setLoading(true);
+    const form = new FormData();
+    form.append('location', formData.location);
+    form.append('bio', formData.bio);
+    form.append('status', formData.status);
+    form.append('skills', JSON.stringify(formData.skills));
+    if (imageFile) {
+      form.append('avatar', imageFile);
+    }
+
     try {
-      const updatedProfile = await authService.updateProfile(formData);
+      const updatedProfile = await authService.updateProfile(form);
       setProfile(updatedProfile);
       setIsEditing(false);
       setLoading(false);
@@ -75,11 +73,11 @@ const Profile = () => {
         <p className="error-message">{error}</p>
       ) : (
         <div className="profile-content">
-          <h2 className="profile-name">Profile ID: {profile._id}</h2>
-          <h3 className="profile-user">User ID: {profile.user}</h3>
+          <img src={profile.avatar || 'default-avatar.jpg'} alt="Profile" className="profile-avatar" />
 
           {isEditing ? (
             <>
+              <input type="file" onChange={handleFileChange} className="profile-input" />
               <input
                 type="text"
                 name="location"
@@ -104,38 +102,19 @@ const Profile = () => {
                 placeholder="Status"
               />
 
-              <div className="skills-section">
-                <label>Skills:</label>
-                {formData.skills.map((skill, index) => (
-                  <input
-                    key={index}
-                    type="text"
-                    value={skill}
-                    onChange={(e) => handleSkillsChange(e, index)}
-                    className="profile-input"
-                    placeholder="Skill"
-                  />
-                ))}
-                <button type="button" onClick={addSkill} className="add-skill-button">Add Skill</button>
-              </div>
+              <button onClick={handleSave} className="profile-button" disabled={loading}>
+                {loading ? 'Saving...' : 'Save'}
+              </button>
             </>
           ) : (
             <>
-              <p className="profile-detail">Location: {profile.location}</p>
-              <p className="profile-detail">Bio: {profile.bio}</p>
-              <p className="profile-detail">Status: {profile.status}</p>
-              <p className="profile-detail">Skills: {profile.skills.join(', ')}</p>
+              <p>Location: {profile.location}</p>
+              <p>Bio: {profile.bio}</p>
+              <p>Status: {profile.status}</p>
+              <button onClick={() => setIsEditing(true)} className="profile-button">
+                Edit Profile
+              </button>
             </>
-          )}
-
-          {isEditing ? (
-            <button onClick={handleSave} className="profile-button" disabled={loading}>
-              {loading ? 'Saving...' : 'Save'}
-            </button>
-          ) : (
-            <button onClick={() => setIsEditing(true)} className="profile-button">
-              Edit Profile
-            </button>
           )}
         </div>
       )}

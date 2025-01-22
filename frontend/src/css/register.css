@@ -3,116 +3,162 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%; /* Use full width for better responsiveness */
+  width: 100%; /* Full width for responsiveness */
   padding: 20px;
-  background-image: linear-gradient(to right top, #4b6cb7, #182848); /* Soft gradient for a professional look */
+  background-image: linear-gradient(to right, #4b6cb7, #182848); /* Smooth gradient */
   height: 100vh; /* Full viewport height */
 }
 
 /* Card styling for the registration form */
 .register-card {
-  background: #ffffff; /* Solid background for better readability */
-  padding: 40px; /* Increased padding for better spacing */
-  border-radius: 10px; /* Slightly rounded corners */
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  background: #ffffff; /* Clean white background */
+  padding: 40px;
+  border-radius: 12px; /* Rounded corners for a modern look */
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15); /* Deeper shadow for depth */
   width: 100%;
   max-width: 400px;
   text-align: center;
+  animation: fadeIn 0.5s ease-in-out; /* Subtle fade-in effect */
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Header styles */
 h2 {
-  margin-bottom: 30px; /* More space between the title and form */
-  font-size: 24px; /* Larger font size for better visibility */
-  color: #333; /* Darker color for contrast */
+  margin-bottom: 20px; /* Space between title and form */
+  font-size: 28px; /* Larger font size for emphasis */
+  font-weight: bold;
+  color: #333; /* Contrast for readability */
+  letter-spacing: 1px;
 }
 
 /* Form layout */
 .form {
   display: flex;
   flex-direction: column;
-  position: relative;
+  gap: 15px; /* Consistent spacing between fields */
+}
+
+/* Form paragraph styling */
+.form p {
+  color: #182848;
+  font-size: 14px;
+  margin-bottom: 5px;
 }
 
 /* Input group styling */
 .input-group {
-  margin-bottom: 25px; /* Increased margin for better spacing */
   position: relative;
 }
 
 /* Input field styling */
 .input-group input {
-  padding: 12px; /* Increased padding for comfort */
-  border: 2px solid #c9baba; /* Defined border for inputs */
-  border-radius: 5px; /* Rounded corners */
+  padding: 12px;
+  border: 1px solid #ccc; /* Defined border for inputs */
+  border-radius: 6px;
   outline: none;
-  width: 100%; /* Full width for inputs */
-  background: #f9f9f9; /* Light background for inputs */
-  transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+  width: 100%; /* Full width */
+  background: #f9f9f9; /* Soft background */
+  font-size: 16px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .input-group input:focus {
   border-color: #007bff; /* Highlight border on focus */
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Light shadow on focus */
-}
-
-/* Button styles */
-.register-button {
-  padding: 12px; /* Consistent padding */
-  background-color: #007bff; /* Primary button color */
-  color: #ffffff; /* Text color for buttons */
-  border: none; /* No border for cleaner look */
-  border-radius: 5px; /* Rounded corners */
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
-  width: 100%;
-  font-size: 16px; /* Consistent font size */
-}
-
-.register-button:hover {
-  background-color: #0056b3; /* Darker shade on hover */
-  transform: translateY(-2px); /* Subtle lift effect */
-}
-
-/* Paragraph styles */
-p {
-  margin-top: 20px; /* Increased margin for better spacing */
-  color: #555; /* Softer color for text */
-}
-
-/* Link styles */
-a {
-  color: #007bff; /* Primary link color */
-  text-decoration: none; /* No underline by default */
-}
-
-a:hover {
-  text-decoration: underline; /* Underline on hover for clarity */
-}
-
-/* Error message styles */
-.error-message {
-  color: #dc3545; /* Bootstrap danger color */
-  margin-top: 10px;
-  padding: 10px; /* Padding for better visibility */
-  border-radius: 5px;
-  background: rgba(220, 53, 69, 0.1); /* Light background */
-  display: inline-block; /* Center align */
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.5); /* Subtle shadow on focus */
 }
 
 /* Password toggle button styles */
 .password-toggle {
   position: absolute;
-  right: 10px; /* Adjusted spacing */
+  right: 12px;
   top: 50%;
   transform: translateY(-50%);
-  font-size: 14px;
-  color: #888; /* Lighter color for the toggle */
+  font-size: 16px;
+  color: #888;
   cursor: pointer;
+  transition: color 0.3s ease;
 }
 
 .password-toggle:hover {
-  color: #007bff; /* Highlight on hover */
+  color: #007bff;
+}
+
+/* Button styles */
+.register-button {
+  padding: 12px;
+  background-color: #007bff; /* Primary button color */
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  width: 100%;
+}
+
+.register-button:hover {
+  background-color: #0056b3; /* Darker shade on hover */
+  transform: translateY(-2px); /* Lift effect */
+}
+
+/* Error message styles */
+.error-message {
+  color: #dc3545; /* Bootstrap danger color */
+  margin-top: 15px;
+  padding: 10px;
+  border-radius: 5px;
+  background: rgba(220, 53, 69, 0.1); /* Light background */
+  font-size: 14px;
+  display: inline-block;
+}
+
+/* Link styles */
+p {
+  margin-top: 20px;
+  color: #555; /* Softer text color */
+  font-size: 14px;
+}
+
+a {
+  color: #007bff;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+  .register-card {
+    padding: 30px;
+    margin: 0 15px;
+  }
+
+  h2 {
+    font-size: 24px;
+  }
+
+  .register-button {
+    font-size: 15px;
+  }
+
+  .input-group input {
+    font-size: 14px;
+  }
 }
 
   
